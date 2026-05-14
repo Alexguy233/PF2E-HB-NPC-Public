@@ -20,9 +20,6 @@ function App() {
   const addSkill = ()=> setSkillIds([...skillIds, Date.now()]);
   const deleteSkill = (id:number)=>setSkillIds(skillIds.filter((s)=>s !== id))
 
-  const skills = skillIds.map((id)=> (
-    <Skill key={id} id={id} onDelete={deleteSkill}/>
-  ));
 
   return <>
     <ListGroup name = "Core" values = {core}/> 
