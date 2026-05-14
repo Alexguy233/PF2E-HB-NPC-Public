@@ -1,0 +1,34 @@
+To RUN: npm run dev
+
+needs node.js v 16 or higher.
+can check by running node -v
+install prettier code-format extension
+
+You can make a react app by using the official tool
+Create React APP (CRA) or by using Vite.
+
+To use vite, run npm create vite@latest  in terminal
+
+node_modules folder: Don't touch, 3rd partly libraries
+public: public assets of the webpage, images and so on.
+
+src: source code of application. App.tsx will be rewritten.
+The stuff in it is react components. ts for tps, tsx for react components
+NOTE: a component can only return one component
+
+index.html: Template. div with root. Container of the application. Also
+a src showing entry point as /src/main.tsx
+
+package.json: info about project
+tsconfig.json: how to compile ts to js
+
+Run npm i bootstrap in the project folder to give us the bootstrap library. It has tons
+of useful css classes. Delete the original index.css and the contents of App.css
+
+Change import "./index.css" to import 'bootstrap/dist/css/bootstrap.css' in
+main.tsx
+
+bootstrap is a really cool thing. it has a website called
+getbootstrap.com/docs that just has a list of templates you can
+use to make things for browser code. Under components, you can find stuff like list group 
+and navbars. Copy it and just return its html. Just change class to className.
