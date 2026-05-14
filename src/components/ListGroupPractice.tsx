@@ -1,3 +1,6 @@
+//IGNORE THIS
+//Notes from tutorials
+
 import {useState} from "react";
 
 //Lets you define the inputs (Props/properties) of a component

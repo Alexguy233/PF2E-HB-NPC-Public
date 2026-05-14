@@ -9,6 +9,7 @@ function LabeledBox({name}:LabeledBoxProps){
 const [text, setText] = useState("");
 const [isEditing, setIsEditing] = useState(false);
 
+
 return(
     <>
     <p>{name}</p>
