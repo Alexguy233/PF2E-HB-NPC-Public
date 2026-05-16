@@ -1,7 +1,7 @@
 //import Message from './Message';
 import {useState} from "react";
 import ListGroup from "./ListGroup"
-import LabeledBox from "./LabeledBox"
+import LabeledCell from "./LabeledCell"
 //import Skill from "./components/Skill";
 import SkillList from "./SkillList"
 import AttackTable from "./AttackTable"
@@ -17,9 +17,9 @@ function NPC({id, onDelete}:NPCProps) {
   const statsNames = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
   const savesNames = ["FORT", "REFL", "WILL"]
 
-  const core = coreNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
-  const stats = statsNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
-  const saves = savesNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
+  const core = coreNames.map((val)=> <LabeledCell name = {val} key = {val}/>)
+  const stats = statsNames.map((val)=> <LabeledCell name = {val} key = {val}/>)
+  const saves = savesNames.map((val)=> <LabeledCell name = {val} key = {val}/>)
 
   const [name, setName] = useState(""); 
   const [isEditing, setIsEditing]= useState(false);

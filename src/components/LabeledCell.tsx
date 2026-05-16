@@ -1,10 +1,10 @@
 import {useState} from "react";
 
-interface LabeledBoxProps {
+interface LabeledCellProps {
   name: string;
 }
 
-function LabeledBox({name}:LabeledBoxProps){
+function LabeledCell({name}:LabeledCellProps){
 //every element has an onClick={} you can set to an arrow function.
 const [text, setText] = useState("");
 const [isEditing, setIsEditing] = useState(false);
@@ -29,4 +29,4 @@ return(
 );
 }
 
-export default LabeledBox;
+export default LabeledCell;
