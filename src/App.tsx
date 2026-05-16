@@ -1,36 +1,26 @@
 //import Message from './Message';
 import {useState} from "react";
-import ListGroup from "./components/ListGroup"
-import LabeledBox from "./components/LabeledBox"
-//import Skill from "./components/Skill";
-import SkillList from "./components/SkillList"
-import AttackTable from "./components/AttackTable"
+import NPC from "./components/NPC"
+
 
 function App() {
-  const coreNames = ["HP", "AC", "Speed"]
-  const statsNames = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-  const savesNames = ["FORT", "REFL", "WILL"]
-
-  const core = coreNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
-  const stats = statsNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
-  const saves = savesNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
-
-  //const [skillIds, setSkillIds] = useState<number[]>([]);
-
-
-  //const addSkill = ()=> setSkillIds([...skillIds, Date.now()]);
-  //const deleteSkill = (id:number)=>setSkillIds(skillIds.filter((s)=>s !== id))
-
-
+  const [npcIds, setNPCIds] = useState<number[]>([]);
+  const addNPC = ()=> setNPCIds([...npcIds, Date.now()]);
+  const deleteNPC = (id:number)=>setNPCIds(npcIds.filter((s)=>s !== id))
   return <>
-    <ListGroup name = "Core" values = {core}/> 
-    <ListGroup name = "StatLine" values = {stats}/> 
-    <ListGroup name = "Saves" values = {saves}/> 
-    <SkillList/>
-    <AttackTable/>
+    <h1>NPCs</h1>
+    <ul className = "list-group">
+      {npcIds.map((id)=> (
+        <li className="list-group-item" key={id}>
+          <NPC id={id} onDelete={deleteNPC}/>
+        </li>
+      ))}
+    </ul>
+    <button type="button" className="btn btn-primary" 
+        onClick = {addNPC}>Add NPC</button>
   </>
 }
-//<t /> is self closing syntax. Means <t></t>
+
 
 
 export default App;
