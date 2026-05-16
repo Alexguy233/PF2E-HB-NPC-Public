@@ -2,8 +2,9 @@
 import {useState} from "react";
 import ListGroup from "./components/ListGroup"
 import LabeledBox from "./components/LabeledBox"
-import Skill from "./components/Skill";
+//import Skill from "./components/Skill";
 import SkillList from "./components/SkillList"
+import AttackTable from "./components/AttackTable"
 
 function App() {
   const coreNames = ["HP", "AC", "Speed"]
@@ -14,21 +15,19 @@ function App() {
   const stats = statsNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
   const saves = savesNames.map((val)=> <LabeledBox name = {val} key = {val}/>)
 
-  const [skillIds, setSkillIds] = useState<number[]>([]);
+  //const [skillIds, setSkillIds] = useState<number[]>([]);
 
 
-  const addSkill = ()=> setSkillIds([...skillIds, Date.now()]);
-  const deleteSkill = (id:number)=>setSkillIds(skillIds.filter((s)=>s !== id))
+  //const addSkill = ()=> setSkillIds([...skillIds, Date.now()]);
+  //const deleteSkill = (id:number)=>setSkillIds(skillIds.filter((s)=>s !== id))
 
 
   return <>
     <ListGroup name = "Core" values = {core}/> 
     <ListGroup name = "StatLine" values = {stats}/> 
     <ListGroup name = "Saves" values = {saves}/> 
-    <SkillList skillIds= {skillIds} onDelete = {deleteSkill}/>
-    <button type="button" className="btn" 
-    onClick = {addSkill}>Add Skill</button>
-    
+    <SkillList/>
+    <AttackTable/>
   </>
 }
 //<t /> is self closing syntax. Means <t></t>

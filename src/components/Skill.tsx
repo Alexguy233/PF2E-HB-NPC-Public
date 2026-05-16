@@ -35,7 +35,7 @@ return(
             {bonus || "0"}
         </p> )
     }
-    <button type="button" className="btn" onClick = {()=>onDelete(id)}>
+    <button type="button" className="btn btn-sm btn-danger" onClick = {()=>onDelete(id)}>
         X
     </button>
     
