@@ -30,11 +30,10 @@ function AttackTable({ attacks, onChange }: AttackTableProps) {
 
   return (
     <>
-      <h1>Attacks</h1>
+      <h2>Attacks</h2>
       <table
         className="table table-bordered"
-        style={{ maxWidth: "800px", minWidth: "700px" }}
-      >
+        >
         <thead>
           <tr>
             <th>Name</th>
@@ -60,7 +59,7 @@ function AttackTable({ attacks, onChange }: AttackTableProps) {
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary" onClick={addAttack}>
+      <button className="btn-primary" onClick={addAttack}>
         Add Attack
       </button>
     </>

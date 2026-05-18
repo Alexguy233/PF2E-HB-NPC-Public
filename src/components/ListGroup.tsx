@@ -11,12 +11,12 @@ function ListGroup<T extends React.ReactNode>({
 }: ListGroupProps<T>) {
   return (
     <>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       <ul className="list-group list-group-horizontal">
         {values.map((value, index) => (
           <li
             className="list-group-item py-0"
-            style={{ padding: "12px" }}
+            
             key={index}
           >
             {value}{" "}

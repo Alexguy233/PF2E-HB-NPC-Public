@@ -1,0 +1,41 @@
+body{
+  background-color:seagreen;
+  color: white; /* also make text white so it's readable */
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 0.25rem 0;  /* also reduce the default large margin */
+  color:green;
+}
+
+.list-group-item {
+  padding: 8px;
+  background-color:antiquewhite;
+}
+
+.table {
+    max-Width: 1000px;
+    min-Width: 700px;
+}
+
+.table td, .table th {
+  background-color:rgb(27, 156, 81);
+}
+
+textarea {
+  min-height: 1.5rem;
+  field-sizing: content;
+}
+
+p {
+    white-space: pre-wrap
+}
+
+button {
+  background-color: seagreen;
+  color: white;
+  border: 1px solid white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

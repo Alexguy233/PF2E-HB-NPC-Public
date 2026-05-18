@@ -10,7 +10,7 @@ function Box({ name, value, onChange }: BoxProps) {
   const [isEditing, setIsEditing] = useState(false);
   return (
     <>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       {isEditing ? (
         <textarea
           value={value}

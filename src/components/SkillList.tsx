@@ -15,7 +15,7 @@ function SkillList({ skills, onChange }: SkillListProps) {
     onChange(skills.map((s) => (s.id === update.id ? update : s)));
   return (
     <>
-      <h1>Skills</h1>
+      <h2>Skills</h2>
       <ul className="list-group list-group-horizontal">
         {skills.map((s) => (
           <li className="list-group-item" key={s.id}>
@@ -23,7 +23,7 @@ function SkillList({ skills, onChange }: SkillListProps) {
           </li>
         ))}
       </ul>
-      <button type="button" className="btn btn-primary" onClick={addSkill}>
+      <button type="button" className="btn-primary" onClick={addSkill}>
         Add Skill
       </button>
     </>

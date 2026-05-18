@@ -15,7 +15,7 @@ function LabeledCell({ name, value, onChange }: LabeledCellProps) {
 
   return (
     <>
-      <p>{name}</p>
+      <div>{name}</div>
       {isEditing ? (
         <textarea
           value={value}
@@ -24,7 +24,7 @@ function LabeledCell({ name, value, onChange }: LabeledCellProps) {
           autoFocus
         />
       ) : (
-        <p onClick={() => setIsEditing(true)}>{value || "0"}</p>
+        <div onClick={() => setIsEditing(true)}>{value || "0"}</div>
       )}
     </>
   );

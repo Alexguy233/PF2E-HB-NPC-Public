@@ -109,7 +109,7 @@ function NPC({ id, onDelete }: NPCProps) {
           autoFocus
         />
       ) : (
-        <h1 onClick={() => setIsEditing(true)}>{name || "Name"}</h1>
+        <h3 onClick={() => setIsEditing(true)}>{name || "Name"}</h3>
       )}
 
       <ListGroup name="Core" values={core} />

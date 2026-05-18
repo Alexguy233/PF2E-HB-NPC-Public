@@ -41,7 +41,7 @@ function ListGroupPractice<T extends React.ReactNode>({
 
   return (
     <>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       {noValMessage}
       <ul className="list-group list-group-horizontal">
         {values.map((value, index) => (
