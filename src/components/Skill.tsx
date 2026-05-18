@@ -18,6 +18,7 @@ function Skill({ skill, onChange, onDelete }: SkillProps) {
 
   return (
     <>
+    <div className="close-button">
       {isEditingName ? (
         <textarea
           value={skill.name}
@@ -28,6 +29,14 @@ function Skill({ skill, onChange, onDelete }: SkillProps) {
       ) : (
         <p onClick={() => setIsEditingName(true)}>{skill.name || "name"}</p>
       )}
+        <button
+        type="button"
+        className="btn btn-sm btn-danger"
+        onClick={() => onDelete(skill.id)}
+      >
+        X
+      </button>
+      </div>
       {isEditingBonus ? (
         <textarea
           value={skill.bonus}
@@ -38,13 +47,6 @@ function Skill({ skill, onChange, onDelete }: SkillProps) {
       ) : (
         <p onClick={() => setIsEditingBonus(true)}>{skill.bonus || "0"}</p>
       )}
-      <button
-        type="button"
-        className="btn btn-sm btn-danger"
-        onClick={() => onDelete(skill.id)}
-      >
-        X
-      </button>
     </>
   );
 }
