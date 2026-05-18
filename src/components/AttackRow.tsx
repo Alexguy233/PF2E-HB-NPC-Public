@@ -8,8 +8,7 @@ export interface AttackRowProps {
   range: string;
   toHit: string;
   traits: string;
-  damage: string;
-  damageType: string;
+  damagetype: string;
 }
 
 //all attacks have:
@@ -40,8 +39,7 @@ function AttackRow({attack, onDelete} : {attack:AttackRowProps,onDelete: (id:num
       {cell("range", "5")}
       {cell("toHit", "+11")}
       {cell("traits", "agile, finesse, etc.")}
-      {cell("damage", "2d6+7")}
-      {cell("damageType", "Piercing")}
+      {cell("damagetype", "2d6+7 Piercing")}
       <td>
         <button className="btn btn-sm btn-danger" onClick={() => onDelete(attack.id)}>
           ✕

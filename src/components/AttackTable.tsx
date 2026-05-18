@@ -12,8 +12,7 @@ const addAttack = () => {
         range : "",
         toHit : "",
         traits : "",
-        damage : "",
-        damageType : ""
+        damagetype : "",
     }]);
 };
 
@@ -24,7 +23,7 @@ const deleteAttack = (id:number) => {
 return(
     <>
     <h1>Attacks</h1>
-    <table className = "table table-bordered">
+    <table className = "table table-bordered" style={{ maxWidth: '800px', minWidth: '700px' }}>
     <thead>
         <tr>
         <th>Name</th>
@@ -33,8 +32,7 @@ return(
             <th>Range</th>
             <th>To Hit</th>
             <th>Traits</th>
-            <th>Damage</th>
-            <th>Damage Type</th>
+            <th>Damage & Type</th>
             <th></th>
             </tr>
     </thead>

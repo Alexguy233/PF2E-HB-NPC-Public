@@ -7,6 +7,10 @@ function App() {
   const [npcIds, setNPCIds] = useState<number[]>([]);
   const addNPC = ()=> setNPCIds([...npcIds, Date.now()]);
   const deleteNPC = (id:number)=>setNPCIds(npcIds.filter((s)=>s !== id))
+  
+  //HandleSaving
+  
+  
   return <>
     <h1>NPCs</h1>
     <ul className = "list-group">
