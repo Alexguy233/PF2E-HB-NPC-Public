@@ -46,3 +46,8 @@ button {
     gap: 10px;
 }
 
+.btn-danger{
+    background-color:rgb(91, 126, 86);
+    border-color:rgb(58, 151, 94);
+}
+
