@@ -1,5 +1,3 @@
-
-
 //Lets you define the inputs (Props/properties) of a component
 interface ListGroupProps<T extends React.ReactNode> {
   name: string;
@@ -7,18 +5,24 @@ interface ListGroupProps<T extends React.ReactNode> {
 }
 
 //Name is name of the ListGroup
-function ListGroup<T extends React.ReactNode>({name, values}:ListGroupProps<T>) {
-
+function ListGroup<T extends React.ReactNode>({
+  name,
+  values,
+}: ListGroupProps<T>) {
   return (
     <>
-    <h1>{name}</h1>
-    <ul className="list-group list-group-horizontal">
-      {values.map((value, index) => (
-        <li className='list-group-item py-0' style={{ padding: "12px" }}
-        key = {index}>
-           {value} </li>
-      ))}
-    </ul>
+      <h1>{name}</h1>
+      <ul className="list-group list-group-horizontal">
+        {values.map((value, index) => (
+          <li
+            className="list-group-item py-0"
+            style={{ padding: "12px" }}
+            key={index}
+          >
+            {value}{" "}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

@@ -1,6 +1,4 @@
-import {useState} from "react";
-
-export interface AttackRowProps {
+export interface AttackData {
   id: number;
   name: string;
   attackType: string;
@@ -11,28 +9,32 @@ export interface AttackRowProps {
   damagetype: string;
 }
 
+interface AttackRowProps {
+  attack: AttackData;
+  onChange: (update: AttackData) => void;
+  onDelete: (id: number) => void;
+}
+
 //all attacks have:
 
-function AttackRow({attack, onDelete} : {attack:AttackRowProps,onDelete: (id:number)=>void} ){
-    const [fields, setFields] = useState(attack);
+function AttackRow({ attack, onChange, onDelete }: AttackRowProps) {
+  const handleChange = (field: keyof AttackData, value: string) => {
+    onChange({ ...attack, [field]: value });
+  };
 
-    const handleChange = (field:keyof AttackRowProps, value:string)=>{
-        setFields({...fields, [field]:value});
-    };
-
-    const cell = (field: keyof AttackRowProps, placeholder: string) => (
+  const cell = (field: keyof AttackData, placeholder: string) => (
     <td>
       <input
-        value={fields[field]}
+        value={attack[field]}
         onChange={(e) => handleChange(field, e.target.value)}
         placeholder={placeholder}
         className="form-control form-control-sm"
       />
     </td>
   );
-    
-    return(
-        <tr>
+
+  return (
+    <tr>
       {cell("name", "Attack name")}
       {cell("attackType", "Melee/Ranged")}
       {cell("actions", "1")}
@@ -41,13 +43,15 @@ function AttackRow({attack, onDelete} : {attack:AttackRowProps,onDelete: (id:num
       {cell("traits", "agile, finesse, etc.")}
       {cell("damagetype", "2d6+7 Piercing")}
       <td>
-        <button className="btn btn-sm btn-danger" onClick={() => onDelete(attack.id)}>
+        <button
+          className="btn btn-sm btn-danger"
+          onClick={() => onDelete(attack.id)}
+        >
           ✕
         </button>
       </td>
     </tr>
-    );
+  );
 }
-
 
 export default AttackRow;

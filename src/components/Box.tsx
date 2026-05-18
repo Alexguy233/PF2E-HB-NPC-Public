@@ -1,29 +1,29 @@
-import {useState} from "react";
+import { useState } from "react";
 
-interface BoxProps{
-    name: string;
+interface BoxProps {
+  name: string;
+  value: string;
+  onChange: (val: string) => void;
 }
-function Spells({name}:BoxProps){
-   const [contents, setContents] = useState(""); 
-   const [isEditing, setIsEditing]= useState(false);
-    return (
-        <>
-        <h1>{name}</h1>
-        {isEditing ? (
-        <textarea value = {contents}
-        onChange={(t)=>setContents(t.target.value)}
-        onBlur={()=>setIsEditing(false)}
-        autoFocus
-        style={{ width: "80%" }}
+function Box({ name, value, onChange }: BoxProps) {
+  //const [contents, setContents] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  return (
+    <>
+      <h1>{name}</h1>
+      {isEditing ? (
+        <textarea
+          value={value}
+          onChange={(t) => onChange(t.target.value)}
+          onBlur={() => setIsEditing(false)}
+          autoFocus
+          style={{ width: "80%" }}
         />
-        ) : (
-            <p onClick = {()=>setIsEditing(true)}>
-                {contents || name}
-            </p>
-        )}
-        </>
-    )
-
+      ) : (
+        <p onClick={() => setIsEditing(true)}>{value || name}</p>
+      )}
+    </>
+  );
 }
 
-export default Spells;
+export default Box;

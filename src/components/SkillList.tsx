@@ -1,29 +1,33 @@
-import Skill from "./Skill";
-import {useState} from "react";
-//interface SkillListProps {
-//    skillIds:number[];
-//    onDelete: (id:number)=>void;
-//}
+import Skill, { type SkillData } from "./Skill";
 
-function SkillList(){
-    const [skillIds, setSkillIds] = useState<number[]>([]);
-    const addSkill = ()=> setSkillIds([...skillIds, Date.now()]);
-    const deleteSkill = (id:number)=>setSkillIds(skillIds.filter((s)=>s !== id))
+interface SkillListProps {
+  skills: SkillData[];
+  onChange: (skills: SkillData[]) => void;
+}
 
-    return (
-        <>
-        <h1>Skills</h1>
-        <ul className = "list-group list-group-horizontal">
-            {skillIds.map((id)=> (
-                <li className="list-group-item" key={id}>
-                    <Skill id={id} onDelete={deleteSkill}/>
-                </li>
-            ))}
-        </ul>
-        <button type="button" className="btn btn-primary" 
-        onClick = {addSkill}>Add Skill</button>
-        </>
-    )
+function SkillList({ skills, onChange }: SkillListProps) {
+  //const [skillIds, setSkillIds] = useState<number[]>([]);
+  const addSkill = () =>
+    onChange([...skills, { id: Date.now(), name: "", bonus: "" }]);
+  const deleteSkill = (id: number) =>
+    onChange(skills.filter((s) => s.id !== id));
+  const updateSkill = (update: SkillData) =>
+    onChange(skills.map((s) => (s.id === update.id ? update : s)));
+  return (
+    <>
+      <h1>Skills</h1>
+      <ul className="list-group list-group-horizontal">
+        {skills.map((s) => (
+          <li className="list-group-item" key={s.id}>
+            <Skill skill={s} onChange={updateSkill} onDelete={deleteSkill} />
+          </li>
+        ))}
+      </ul>
+      <button type="button" className="btn btn-primary" onClick={addSkill}>
+        Add Skill
+      </button>
+    </>
+  );
 }
 
 export default SkillList;

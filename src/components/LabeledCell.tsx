@@ -1,32 +1,33 @@
-import {useState} from "react";
+import { useState } from "react";
 
 interface LabeledCellProps {
   name: string;
+  value: string;
+  onChange: (val: string) => void;
 }
 
-function LabeledCell({name}:LabeledCellProps){
-//every element has an onClick={} you can set to an arrow function.
-const [text, setText] = useState("");
-const [isEditing, setIsEditing] = useState(false);
+function LabeledCell({ name, value, onChange }: LabeledCellProps) {
+  //every element has an onClick={} you can set to an arrow function.
 
+  //value is text usually for this component.
 
-return(
+  const [isEditing, setIsEditing] = useState(false);
+
+  return (
     <>
-    <p>{name}</p>
-    {isEditing ? (
-        <textarea value = {text}
-        onChange={(e)=> setText(e.target.value)}
-        onBlur={()=> setIsEditing(false)}
-        autoFocus
+      <p>{name}</p>
+      {isEditing ? (
+        <textarea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onBlur={() => setIsEditing(false)}
+          autoFocus
         />
-    ) : (
-        <p onClick = {()=> setIsEditing(true)}>
-            {text || "0"}
-        </p>
-    )
-    }
+      ) : (
+        <p onClick={() => setIsEditing(true)}>{value || "0"}</p>
+      )}
     </>
-);
+  );
 }
 
 export default LabeledCell;

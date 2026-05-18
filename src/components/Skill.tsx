@@ -1,47 +1,52 @@
-import {useState} from "react";
+import { useState } from "react";
 
-interface SkillProps{
-    id:number;
-    onDelete: (id:number) => void;
+export interface SkillData {
+  id: number;
+  name: string;
+  bonus: string;
 }
 
-function Skill({id, onDelete}:SkillProps){
-const [bonus, setBonus] = useState("");
-const [isEditingName, setIsEditingName] = useState(false);
-const [name, setName] = useState("");
-const [isEditingBonus, setIsEditingBonus] = useState(false);
+interface SkillProps {
+  skill: SkillData;
+  onChange: (updated: SkillData) => void;
+  onDelete: (id: number) => void;
+}
 
-return(
+function Skill({ skill, onChange, onDelete }: SkillProps) {
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingBonus, setIsEditingBonus] = useState(false);
+
+  return (
     <>
-    {isEditingName ? (
-        <textarea value = {name}
-        onChange={(e)=>setName(e.target.value)}
-        onBlur={()=> setIsEditingName(false)}
-        autoFocus
+      {isEditingName ? (
+        <textarea
+          value={skill.name}
+          onChange={(e) => onChange({ ...skill, name: e.target.value })}
+          onBlur={() => setIsEditingName(false)}
+          autoFocus
         />
-    ) : (
-        <p onClick = {()=> setIsEditingName(true)}>
-            {name || "name"}
-        </p>
-    )}
-    {isEditingBonus ? (
-        <textarea value = {bonus}
-        onChange={(e)=>setBonus(e.target.value)}
-        onBlur={()=> setIsEditingBonus(false)}
-        autoFocus
+      ) : (
+        <p onClick={() => setIsEditingName(true)}>{skill.name || "name"}</p>
+      )}
+      {isEditingBonus ? (
+        <textarea
+          value={skill.bonus}
+          onChange={(e) => onChange({ ...skill, bonus: e.target.value })}
+          onBlur={() => setIsEditingBonus(false)}
+          autoFocus
         />
-    ) : (
-        <p onClick = {()=> setIsEditingBonus(true)}>
-            {bonus || "0"}
-        </p> )
-    }
-    <button type="button" className="btn btn-sm btn-danger" onClick = {()=>onDelete(id)}>
+      ) : (
+        <p onClick={() => setIsEditingBonus(true)}>{skill.bonus || "0"}</p>
+      )}
+      <button
+        type="button"
+        className="btn btn-sm btn-danger"
+        onClick={() => onDelete(skill.id)}
+      >
         X
-    </button>
-    
+      </button>
     </>
-);
-
+  );
 }
 
 export default Skill;

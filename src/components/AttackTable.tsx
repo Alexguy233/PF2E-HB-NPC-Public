@@ -1,32 +1,43 @@
-import AttackRow, {type AttackRowProps} from "./AttackRow";
-import {useState} from "react";
+import AttackRow, { type AttackData } from "./AttackRow";
 
-function AttackTable(){
-const [attacks, setAttacks] = useState<AttackRowProps[]>([]);
+interface AttackTableProps {
+  attacks: AttackData[];
+  onChange: (val: AttackData[]) => void;
+}
 
-const addAttack = () => {
-    setAttacks([...attacks, {id: Date.now(), 
-        name : "",
-        attackType : "",
-        actions : "",
-        range : "",
-        toHit : "",
-        traits : "",
-        damagetype : "",
-    }]);
-};
+function AttackTable({ attacks, onChange }: AttackTableProps) {
+  //const [attacks, setAttacks] = useState<AttackRowProps[]>([]);
 
-const deleteAttack = (id:number) => {
-    setAttacks(attacks.filter((a)=>a.id !==id));
-};
+  const addAttack = () => {
+    onChange([
+      ...attacks,
+      {
+        id: Date.now(),
+        name: "",
+        attackType: "",
+        actions: "",
+        range: "",
+        toHit: "",
+        traits: "",
+        damagetype: "",
+      },
+    ]);
+  };
 
-return(
+  const deleteAttack = (id: number) => {
+    onChange(attacks.filter((a) => a.id !== id));
+  };
+
+  return (
     <>
-    <h1>Attacks</h1>
-    <table className = "table table-bordered" style={{ maxWidth: '800px', minWidth: '700px' }}>
-    <thead>
-        <tr>
-        <th>Name</th>
+      <h1>Attacks</h1>
+      <table
+        className="table table-bordered"
+        style={{ maxWidth: "800px", minWidth: "700px" }}
+      >
+        <thead>
+          <tr>
+            <th>Name</th>
             <th>Attack Type</th>
             <th>Actions</th>
             <th>Range</th>
@@ -34,19 +45,25 @@ return(
             <th>Traits</th>
             <th>Damage & Type</th>
             <th></th>
-            </tr>
-    </thead>
-    <tbody>
-        {attacks.map((a)=> (
-            <AttackRow key ={a.id} attack = {a} onDelete={deleteAttack}/>
-        ))}
-    </tbody>
-    </table>
-    <button className = "btn btn-primary" onClick={addAttack}>
-    Add Attack
-    </button>
+          </tr>
+        </thead>
+        <tbody>
+          {attacks.map((a) => (
+            <AttackRow
+              key={a.id}
+              attack={a}
+              onDelete={deleteAttack}
+              onChange={(update) =>
+                onChange(attacks.map((x) => (x.id === update.id ? update : x)))
+              }
+            />
+          ))}
+        </tbody>
+      </table>
+      <button className="btn btn-primary" onClick={addAttack}>
+        Add Attack
+      </button>
     </>
-);
-
+  );
 }
 export default AttackTable;
