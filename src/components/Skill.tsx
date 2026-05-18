@@ -27,7 +27,7 @@ function Skill({ skill, onChange, onDelete }: SkillProps) {
           autoFocus
         />
       ) : (
-        <p onClick={() => setIsEditingName(true)}>{skill.name || "name"}</p>
+        <div onClick={() => setIsEditingName(true)}>{skill.name || "name"}</div>
       )}
         <button
         type="button"
@@ -45,7 +45,7 @@ function Skill({ skill, onChange, onDelete }: SkillProps) {
           autoFocus
         />
       ) : (
-        <p onClick={() => setIsEditingBonus(true)}>{skill.bonus || "0"}</p>
+        <div onClick={() => setIsEditingBonus(true)}>{skill.bonus || "0"}</div>
       )}
     </>
   );
