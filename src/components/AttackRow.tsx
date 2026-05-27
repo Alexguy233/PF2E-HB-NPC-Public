@@ -24,11 +24,17 @@ function AttackRow({ attack, onChange, onDelete }: AttackRowProps) {
 
   const cell = (field: keyof AttackData, placeholder: string) => (
     <td>
-      <input
+      <textarea
         value={attack[field]}
         onChange={(e) => handleChange(field, e.target.value)}
         placeholder={placeholder}
+        rows={1}
         className="form-control form-control-sm"
+        onInput={(e) => {
+        const el = e.currentTarget;
+        el.style.height = 'auto';
+        el.style.height = `${el.scrollHeight}px`;
+      }}
       />
     </td>
   );
