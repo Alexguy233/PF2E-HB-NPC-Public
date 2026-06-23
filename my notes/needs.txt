@@ -32,3 +32,13 @@ bootstrap is a really cool thing. it has a website called
 getbootstrap.com/docs that just has a list of templates you can
 use to make things for browser code. Under components, you can find stuff like list group 
 and navbars. Copy it and just return its html. Just change class to className.
+
+
+
+  server: {
+    host: true,
+    port: 5173,
+    watch: {
+      usePolling: true,
+    }
+  }
